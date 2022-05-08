@@ -1,0 +1,93 @@
+<div class="container  d-flex justify-content-center">
+  <h3>Welcome To E-Stock..!</h3>
+</div>
+<br>
+<div class="container h-100 d-flex justify-content-center">
+
+  <form class="form-inline" [formGroup]="stockform" (ngSubmit)="onSubmit()">
+
+    <div class="form-group mb-2">
+
+      <label for="name" class="sr-only">Company Code</label>
+      <input type="input" class="form-control" id="name" placeholder="LeaderID" formControlName="name">
+      <br>
+      <button type="submit" class="btn btn-primary mb-2 ">Fetch Stock</button> 
+      <button type="button" class="btn btn-primary mb-2 margin-left" (click)="reloadPage()">Clear Search</button>
+    </div>
+    <div class="text-danger">{{errorMsg}}</div>
+  </form>
+</div>
+<div class="container h-100 d-flex justify-content-center">
+  <div class="panel-body" style="display: flex; ">
+
+    <form>
+      <div class="form-group">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="disabledTextInput">Stock Exchange</label>
+              <input type="text" id="disabledTextInput" class="form-control" disabled
+                placeholder={{stockpricelist.companyDto.stockExchange}}>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="disabledTextInput">Company Name</label>
+              <input type="text" id="disabledTextInput" class="form-control" disabled
+                placeholder={{stockpricelist.companyDto.companyName}}>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="disabledTextInput">Company CEO</label>
+              <input type="text" id="disabledTextInput" class="form-control" disabled
+                placeholder={{stockpricelist.companyDto.companyCEO}}>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="disabledTextInput">Turn Over</label>
+              <input type="text" id="disabledTextInput" class="form-control" disabled
+                placeholder={{stockpricelist.companyDto.turnover}}>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="disabledTextInput">Board of Directors</label>
+              <input type="text" id="disabledTextInput" class="form-control" disabled
+                placeholder={{stockpricelist.companyDto.boardOfDirectors}}>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <label for="disabledTextInput">Company Profile</label>
+              <input type="text" id="disabledTextInput" class="form-control" disabled
+                placeholder={{stockpricelist.companyDto.companyProfile}}>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div><br><br>
+<div class="container  d-flex justify-content-center">
+  <h4>Stock Price Details</h4>
+</div>
+<div class="container h-2000 d-flex justify-content-center">
+  <div class="panel-body">
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Id</th>
+          <th>Company Code</th>
+          <th>Current Stock Price</th>
+          <th>Stock Price Data</th>
+          <th>Stock Price Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stock of stockpricelist.stockPriceDTO">
+          <td>{{stock.id}}</td>
+          <td>{{stock.companyCode}}</td>
+          <td>{{stock.currentStockPrice}}</td>
+          <td>{{stock.stockPriceDate}}</td>
+          <td>{{stock.stockPriceTime}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
